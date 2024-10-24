@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Button Interaction</title>
+    <style>
+        body {
+            background-color: #87182d;
+        }
+        .wrapper {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .no-btn {
+            position: absolute;
+        }
+        .gif {
+            margin-top: 20px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="question">Do you love me?</div>
+        <button class="btn yes-btn">Yes</button>
+        <button class="btn no-btn">No</button>
+        <img class="gif" src="" alt="Love GIF" />
+    </div>
+
+<script>
+// Selecteer de benodigde elementen uit de HTML
+const wrapper = document.querySelector('.wrapper');
+const question = document.querySelector('.question');
+const gif = document.querySelector('.gif');
+const yesBtn = document.querySelector('.yes-btn');
+const noBtn = document.querySelector('.no-btn');
+
+// Wanneer op de 'Yes' knop wordt geklikt
+yesBtn.addEventListener("click", () => {
+    // Verander de tekst naar een bevestigend antwoord
+    question.innerHTML = "I love you too! 😍";
+    // Verander het plaatje naar de nieuwe GIF
+    gif.src = "https://media.giphy.com/media/0WZEcXR7jRxjIFfpsI/giphy.gif";
+});
+
+// Wanneer de muis over de 'No' knop gaat
+noBtn.addEventListener("mouseover", () => {
+// Bepaal de positie en grootte van de 'No' knop
+const noBtnRect = noBtn.getBoundingClientRect();
+// Bepaal de maximale breedte en hoogte binnen het venster
+const maxX = window.innerWidth - noBtnRect.width;
+const maxY = window.innerHeight - noBtnRect.height;
+    
+// Genereer een willekeurige X- en Y-positie
+const randomX = Math.floor(Math.random() * maxX);
+const randomY = Math.floor(Math.random() * maxY);
+    
+// Verplaats de 'No' knop naar de nieuwe willekeurige positie
+noBtn.style.left = randomX + "px";
+noBtn.style.top = randomY + "px";
+});
+</script>
+</body>
+</html>
